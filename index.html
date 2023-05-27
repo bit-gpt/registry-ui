@@ -76,7 +76,7 @@
             >
               <div class="pb-7">
                 <img
-                  x-bind:src="'https://prem-registry.fly.dev'+(service.icon)"
+                  x-bind:src="service.icon"
                   width="60"
                   height="60"
                 />
@@ -103,7 +103,7 @@
               <img
                 width="60"
                 height="60"
-                x-bind:src="'https://prem-registry.fly.dev'+(selectedService.icon)"
+                x-bind:src="selectedService.icon"
                 x-bind:alt="selectedService.name"
               />
 
@@ -177,7 +177,7 @@
             });
           },
           fetchServices: function () {
-            fetch("https://prem-registry.fly.dev/manifests/")
+            fetch("https://raw.githubusercontent.com/premAI-io/prem-registry/main/manifests.json")
               .then((response) => response.json())
               .then((data) => {
                 this.data = data;
