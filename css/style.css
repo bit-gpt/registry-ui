@@ -168,16 +168,23 @@ body {
   backdrop-filter: blur(20px);
   box-shadow: 0px 3.74684px 22.481px -0.93671px rgba(0, 0, 0, 0.2);
 }
-
-.modal-body__list-name li {
-  font-size: 16px;
-  line-height: 30px;
+.modal-body__list-name li span {
   color: #fff;
   opacity: 0.5;
-  margin-bottom: 4px;
+  width: 50%;
 }
-.modal-body__list-name.opacity-full li {
-  opacity: 1 !important;
+.modal-body__list-name li {
+  display: flex;
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 30px;
+}
+.modal-body__list-name li > div {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  width: 50%;
+  gap: 9px;
 }
 
 .modal-body__list-name li button {
