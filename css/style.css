@@ -48,10 +48,15 @@ body {
   transition: all 0.4s;
 }
 
-.btn-outline--active,
-.btn-outline:hover {
+.btn-outline--active {
   background-color: #f58e8e;
   border-color: transparent;
+}
+@media (min-width: 768px) {
+  .btn-outline:hover {
+    background-color: #f58e8e;
+    border-color: transparent;
+  }
 }
 
 .registry-card {
@@ -65,6 +70,11 @@ body {
   );
   border: 1.40506px solid rgba(237, 237, 237, 0.2);
   box-shadow: 0px 3.74684px 22.481px -0.93671px rgba(0, 0, 0, 0.2);
+}
+.registry-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .registry-card h2 {
@@ -142,7 +152,7 @@ body {
   font-size: 28px;
   font-weight: bold;
   width: 50px;
-  text-align: left;
+  margin-bottom: 15px;
 }
 
 .modal-body h2 {

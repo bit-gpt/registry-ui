@@ -75,11 +75,7 @@
               @click="selectedService = service; open = true"
             >
               <div class="pb-7">
-                <img
-                  x-bind:src="service.icon"
-                  width="60"
-                  height="60"
-                />
+                <img x-bind:src="service.icon" width="60" height="60" />
               </div>
               <div class="border-light border-b -mx-8"></div>
               <h2 x-text="service.name"></h2>
@@ -97,7 +93,9 @@
     <template x-if="open">
       <div class="modal flex">
         <div class="modal-content">
-          <button class="close" @click="open = false">&times;</button>
+          <div class="text-right">
+            <button class="close" @click="open = false">&times;</button>
+          </div>
           <div class="modal-body">
             <div class="flex gap-6 modal-body__row md:-mx-[50px] -mx-4">
               <img
@@ -123,8 +121,6 @@
               <ul class="modal-body__list-name">
                 <li>Memory Requirements:</li>
                 <li>Apps:</li>
-                <li>Docker Image:</li>
-                <li>Default Port:</li>
               </ul>
               <ul class="modal-body__list-name opacity-full">
                 <li
@@ -138,10 +134,6 @@
                     ></button>
                   </template>
                 </li>
-                <li
-                  x-text="selectedService.dockerImages.gpu?.image || selectedService.dockerImages.cpu?.image"
-                ></li>
-                <li x-text="selectedService.defaultPort"></li>
               </ul>
             </div>
           </div>
@@ -177,7 +169,9 @@
             });
           },
           fetchServices: function () {
-            fetch("https://raw.githubusercontent.com/premAI-io/prem-registry/main/manifests.json")
+            fetch(
+              "https://raw.githubusercontent.com/premAI-io/prem-registry/main/manifests.json"
+            )
               .then((response) => response.json())
               .then((data) => {
                 this.data = data;
