@@ -123,8 +123,6 @@
               <ul class="modal-body__list-name">
                 <li>Memory Requirements:</li>
                 <li>Apps:</li>
-                <li>Docker Image:</li>
-                <li>Default Port:</li>
               </ul>
               <ul class="modal-body__list-name opacity-full">
                 <li
@@ -138,10 +136,6 @@
                     ></button>
                   </template>
                 </li>
-                <li
-                  x-text="selectedService.dockerImages.gpu?.image || selectedService.dockerImages.cpu?.image"
-                ></li>
-                <li x-text="selectedService.defaultPort"></li>
               </ul>
             </div>
           </div>
