@@ -119,13 +119,10 @@
             ></p>
             <div class="flex md:gap-[70px] gap-8">
               <ul class="modal-body__list-name">
-                <li>Memory Requirements:</li>
-                <li>Apps:</li>
+                <li>Interfaces:</li>
+                <li>Memory Required (MiB):</li>
               </ul>
               <ul class="modal-body__list-name opacity-full">
-                <li
-                  x-text="selectedService.modelInfo.memoryRequirements || '-'"
-                ></li>
                 <li class="flex gap-3">
                   <template x-for="tag in selectedService.interfaces">
                     <button
@@ -134,6 +131,9 @@
                     ></button>
                   </template>
                 </li>
+                <li
+                  x-text="selectedService.modelInfo.memoryRequirements || '-'"
+                ></li>
               </ul>
             </div>
           </div>
