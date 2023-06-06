@@ -117,25 +117,23 @@
               class="text-white md:mt-[40px] mb-7 mt-6"
               x-text="selectedService.description"
             ></p>
-            <div class="flex md:gap-[70px] gap-8">
-              <ul class="modal-body__list-name">
-                <li>Interfaces:</li>
-                <li>Memory Required (MiB):</li>
-              </ul>
-              <ul class="modal-body__list-name opacity-full">
-                <li class="flex gap-3">
-                  <template x-for="tag in selectedService.interfaces">
-                    <button
-                      class="btn-outline capitalize"
-                      x-text="tag"
-                    ></button>
-                  </template>
+              <ul class="modal-body__list-name md:max-w-[500px]">
+                <li>
+                  <span>Interfaces:</span>
+                  <div>
+                    <template x-for="tag in selectedService.interfaces">
+                      <button
+                        class="btn-outline capitalize"
+                        x-text="tag"
+                      ></button>
+                    </template>
+                  </div>
                 </li>
-                <li
-                  x-text="selectedService.modelInfo.memoryRequirements || '-'"
-                ></li>
+                <li>
+                  <span>Memory (MiB):</span>
+                  <div x-text="selectedService.modelInfo.memoryRequirements || '-'"></div>
+                </li>
               </ul>
-            </div>
           </div>
         </div>
       </div>
