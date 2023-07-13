@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PremAI is the leading open source platform for running your own AI models on your own servers. PremAI Registry serves as the central hub for showcasing and connecting with AI-powered solutions.">
     <title>Prem Registry</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer data-domain="registry.premai.io" src="https://analytics.prem.ninja/js/script.js"></script>
@@ -69,12 +70,12 @@
         </div>
         <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
           <template x-for="service in filteredData()">
-            <a x-bind:href="'/detail.html?service='+service.id" target="_blank"> 
+            <a x-bind:href="'/detail.html?service='+service.id">
             <div
               class="registry-card"
             >
               <div class="pb-7">
-                <img x-bind:src="service.icon" width="60" height="60" />
+                <img x-bind:src="service.icon" x-bind:alt="service.name" width="60" height="60" />
               </div>
               <div class="border-light border-b -mx-8"></div>
               <h2 x-text="service.name"></h2>
