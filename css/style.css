@@ -221,7 +221,7 @@ body {
 }
 
 .loader {
-  border: 8px solid #f3f3f3;
+  border: 8px solid #F58E8E;
   border-radius: 50%;
   border-top: 8px solid rgba(237, 237, 237, 0.2);
   width: 50px;
