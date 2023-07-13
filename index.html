@@ -69,9 +69,9 @@
         </div>
         <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
           <template x-for="service in filteredData()">
+            <a x-bind:href="'/detail.html?service='+service.id" target="_blank"> 
             <div
               class="registry-card"
-              @click="selectedService = service; open = true"
             >
               <div class="pb-7">
                 <img x-bind:src="service.icon" width="60" height="60" />
@@ -84,67 +84,17 @@
                 </template>
               </div>
             </div>
+          </a>
           </template>
         </div>
       </div>
     </section>
-
-    <template x-if="open">
-      <div class="modal flex">
-        <div class="modal-content">
-          <div class="text-right">
-            <button class="close" @click="open = false">&times;</button>
-          </div>
-          <div class="modal-body">
-            <div class="flex gap-6 modal-body__row md:-mx-[50px] -mx-4">
-              <img
-                width="60"
-                height="60"
-                x-bind:src="selectedService.icon"
-                x-bind:alt="selectedService.name"
-              />
-
-              <div>
-                <h2 x-text="selectedService.name"></h2>
-                <p
-                  class="text-[#EDEDED] text-[16px] opacity-50"
-                  x-text="selectedService.id"
-                ></p>
-              </div>
-            </div>
-            <p
-              class="text-white md:mt-[40px] mb-7 mt-6"
-              x-text="selectedService.description"
-            ></p>
-              <ul class="modal-body__list-name md:max-w-[500px]">
-                <li>
-                  <span>Interfaces:</span>
-                  <div>
-                    <template x-for="tag in selectedService.interfaces">
-                      <button
-                        class="btn-outline capitalize"
-                        x-text="tag"
-                      ></button>
-                    </template>
-                  </div>
-                </li>
-                <li>
-                  <span>Memory (MiB):</span>
-                  <div x-text="selectedService.modelInfo.memoryRequirements || '-'"></div>
-                </li>
-              </ul>
-          </div>
-        </div>
-      </div>
-    </template>
 
     <script>
       function init() {
         return {
           isLoading: true,
           data: [],
-          open: false,
-          selectedService: null,
           tags: [],
           toggleTag: function (tag) {
             this.tags.set(tag, !this.tags.get(tag));
