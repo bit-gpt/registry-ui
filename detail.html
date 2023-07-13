@@ -67,101 +67,128 @@
 
     <template x-if="serviceFound()">
       <section class="bg-[#1D1E24] min-h-screen">
-        <div class="container mx-auto lg:py-[100px] py-[50px] px-4">
-          <div class="flex flex-wrap justify-between items-center max-md:gap-4">
+        <div class="container relative mx-auto lg:pt-[100px] pb-[45px] pt-[50px] px-4">
+          <a
+            href="/"
+            class="w-[30px] h-[30px] absolute lg:top-[30px] top-[13px] xl:left-[-40px]"
+          >
+            <img class="md:mx-auto" src="./images/arrow.svg" alt="arrow-logo" />
+          </a>
+          <div
+            class="flex max-md:flex-wrap lg:gap-8 gap-4 max-md:gap-4 items-start"
+          >
             <img
-              class="max-md:w-[50px] w-[50px]"
+              class="max-md:w-[50px] w-[50px] mt-[6px]"
               x-bind:src="selectedService.icon"
               x-bind:alt="selectedService.name"
             />
-            <h1
-              class="md:text-[45px] text-[35px] text-white proximaNova-bold"
-              x-text="selectedService.name"
-            ></h1>
-            <h3 x-text="selectedService.id" class="text-white"></h3>
-            <button
-              class="btn-primary proximaNova-bold flex items-center gap-2"
-              onclick="window.location.href='https://www.prem.ninja/';"
-            >
-              Install PremAI
-              <span
-                ><svg
-                  width="20"
-                  height="12"
-                  viewBox="0 0 23 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21.3906 4.2058L17.81 0.295798C17.724 0.20207 17.6217 0.127675 17.509 0.0769067C17.3962 0.026138 17.2753 0 17.1532 0C17.031 0 16.9101 0.026138 16.7973 0.0769067C16.6846 0.127675 16.5823 0.20207 16.4963 0.295798C16.3239 0.483161 16.2272 0.736613 16.2272 1.0008C16.2272 1.26498 16.3239 1.51844 16.4963 1.7058L19.79 5.2958H0.925197C0.679819 5.2958 0.444492 5.40116 0.270984 5.58869C0.0974758 5.77623 0 6.03058 0 6.2958C0 6.56102 0.0974758 6.81537 0.270984 7.00291C0.444492 7.19044 0.679819 7.2958 0.925197 7.2958H19.8455L16.4963 10.9058C16.4095 10.9988 16.3407 11.1094 16.2937 11.2312C16.2468 11.3531 16.2226 11.4838 16.2226 11.6158C16.2226 11.7478 16.2468 11.8785 16.2937 12.0004C16.3407 12.1222 16.4095 12.2328 16.4963 12.3258C16.5823 12.4195 16.6846 12.4939 16.7973 12.5447C16.9101 12.5955 17.031 12.6216 17.1532 12.6216C17.2753 12.6216 17.3962 12.5955 17.509 12.5447C17.6217 12.4939 17.724 12.4195 17.81 12.3258L21.3906 8.4458C21.9103 7.8833 22.2023 7.1208 22.2023 6.3258C22.2023 5.5308 21.9103 4.7683 21.3906 4.2058Z"
-                    fill="#F49E97"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-          <div class="flex flex-wrap gap-4 mt-8 mb-16">
-            <template x-for="[tag, value] in Array.from(tags.entries())">
+            <div>
+              <h1
+                class="lg:text-[45px] lg:leading-[55px] text-[35px] max-md:text-[30px] text-white proximaNova-bold"
+                x-text="selectedService.name"
+              ></h1>
+              <p
+                x-text="selectedService.id"
+                class="text-[#EDEDED] opacity-50"
+              ></p>
+              <div class="flex flex-wrap gap-4 mt-[14px]">
+                <template x-for="[tag, value] in Array.from(tags.entries())">
+                  <button
+                    :class="{'btn-outline capitalize': true, 'btn-outline--active': selectedService.interfaces.includes(tag)}"
+                    x-text="tag"
+                  ></button>
+                </template>
+              </div>
+            </div>
+            <div class="ml-auto">
               <button
-                :class="{'btn-outline capitalize': true, 'btn-outline--active': selectedService.interfaces.includes(tag)}"
-                x-text="tag"
-              ></button>
-            </template>
+                class="btn-primary proximaNova-bold flex items-center gap-2 whitespace-nowrap"
+                onclick="window.location.href='https://www.prem.ninja/';"
+              >
+                Install PremAI
+                <span
+                  ><svg
+                    width="20"
+                    height="12"
+                    viewBox="0 0 23 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.3906 4.2058L17.81 0.295798C17.724 0.20207 17.6217 0.127675 17.509 0.0769067C17.3962 0.026138 17.2753 0 17.1532 0C17.031 0 16.9101 0.026138 16.7973 0.0769067C16.6846 0.127675 16.5823 0.20207 16.4963 0.295798C16.3239 0.483161 16.2272 0.736613 16.2272 1.0008C16.2272 1.26498 16.3239 1.51844 16.4963 1.7058L19.79 5.2958H0.925197C0.679819 5.2958 0.444492 5.40116 0.270984 5.58869C0.0974758 5.77623 0 6.03058 0 6.2958C0 6.56102 0.0974758 6.81537 0.270984 7.00291C0.444492 7.19044 0.679819 7.2958 0.925197 7.2958H19.8455L16.4963 10.9058C16.4095 10.9988 16.3407 11.1094 16.2937 11.2312C16.2468 11.3531 16.2226 11.4838 16.2226 11.6158C16.2226 11.7478 16.2468 11.8785 16.2937 12.0004C16.3407 12.1222 16.4095 12.2328 16.4963 12.3258C16.5823 12.4195 16.6846 12.4939 16.7973 12.5447C16.9101 12.5955 17.031 12.6216 17.1532 12.6216C17.2753 12.6216 17.3962 12.5955 17.509 12.5447C17.6217 12.4939 17.724 12.4195 17.81 12.3258L21.3906 8.4458C21.9103 7.8833 22.2023 7.1208 22.2023 6.3258C22.2023 5.5308 21.9103 4.7683 21.3906 4.2058Z"
+                      fill="#F49E97"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 
         <!--- Service banner -->
         <template x-if="selectedService.banner">
-          <div class="flex">
+          <div class="container px-4 mx-auto mb-[45px]">
             <img
-              class="object-fill h-48 w-96"
+              class="object-cover h-48 w-full rounded-md"
               x-bind:src="selectedService.banner"
               x-bind:alt="selectedService.name"
             />
           </div>
         </template>
 
-        <div class="m-10">
-          <div class="markdown-body p-10">
-            <div
-              x-html="marked.parse(selectedService.documentation || '')"
-            ></div>
+        <div class="service-detail container px-4 mx-auto">
+          <div
+            class="card xl:px-16 md:px-10 px-4 md:py-8 py-4 lg:w-[60%] scrollbar-custom p-10"
+          >
+            <div class="markdown-body">
+              <div
+                x-html="marked.parse(selectedService.documentation || '')"
+              ></div>
+            </div>
           </div>
-          <div class="text-white mt-10">
-            <h3 class="text-brightgray font-bold text-xl mb-6">General</h3>
-            <div class="flex justify-between">
-              <span>Docker Image</span>
-              <span
-                x-text="(selectedService.dockerImages.cpu || selectedService.dockerImages.gpu || {}).image"
-              ></span>
-            </div>
-            <div class="flex justify-between">
-              <span> Docker Image Size</span>
-              <span
-                x-text="(selectedService.dockerImages.cpu || selectedService.dockerImages.gpu || {}).size"
-              ></span>
-            </div>
-            <template x-for="info in generalInfo">
-              <div class="flex justify-between">
-                <span x-text="info.key"></span>
-                <span x-text="info.value"></span>
+          <div class="lg:w-[40%] w-full">
+            <div class="card px-7 py-8">
+              <h3 class="text-[#EDEDED] font-bold text-xl mb-6">General</h3>
+              <div class="right-general-card">
+                <span class="opacity-70">Docker Image</span>
+                <span
+                  x-text="(selectedService.dockerImages.cpu || selectedService.dockerImages.gpu || {}).image"
+                ></span>
               </div>
-            </template>
-          </div>
-          <template x-if="modelInfo().length > 0">
-            <div class="text-white mt-10">
-              <h3 class="text-brightgray font-bold text-xl mb-6">Model Info</h3>
-              <template x-for="info in modelInfo">
-                <div class="flex justify-between">
-                  <span x-text="info.key"></span>
+              <div class="right-general-card">
+                <span class="opacity-70">Docker Image Size</span>
+                <span
+                  x-text="(selectedService.dockerImages.cpu || selectedService.dockerImages.gpu || {}).size"
+                ></span>
+              </div>
+              <div class="right-general-card">
+                <span class="opacity-70">Memory Requirements</span
+                ><span>16GB</span>
+              </div>
+              <template x-for="info in generalInfo">
+                <div class="right-general-card">
+                  <span class="opacity-70" x-text="info.key"></span>
                   <span x-text="info.value"></span>
                 </div>
               </template>
+
+              <h3 class="text-[#EDEDED] font-bold text-xl my-5">Model Info</h3>
+              <template x-if="modelInfo().length > 0">
+                <template x-for="info in modelInfo">
+                  <div class="right-general-card">
+                    <span class="opacity-70" x-text="info.key"></span>
+                    <span x-text="info.value"></span>
+                  </div>
+                </template>
+              </template>
             </div>
-          </template>
-          <div class="text-white mt-10 markdown-body p-10">
-            <h3 class="text-brightgray font-bold text-xl mb-6">Description</h3>
-            <div x-html="marked.parse(selectedService.description || '')"></div>
+            <div class="card md:px-7 px-[22px] md:py-8 md:mt-7">
+              <h3 class="text-[#EDEDED] font-bold text-xl mb-6">Description</h3>
+              <div
+                class="text-[#EDEDED]"
+                x-html="marked.parse(selectedService.description || '')"
+              ></div>
+            </div>
           </div>
         </div>
       </section>
